@@ -121,3 +121,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Email settings
+
+from .settings import *
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'getfutureproof.testing@gmail.com'
+EMAIL_HOST_PASSWORD = 'january2021'
+# EMAIL_PORT = 587
+EMAIL_PORT = 465
+# EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True

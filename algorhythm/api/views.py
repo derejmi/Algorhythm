@@ -1,10 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 # from django.http import HttpResponse
 from rest_framework import generics, status
 from .serializers import RoomSerializer, CreateRoomSerializer
 from .models import Room
 from rest_framework.views import APIView
 from rest_framework.response import Response
+
+from django.core.mail import send_mail
+from django.conf import settings
 
 # Create your views here.
 
@@ -27,6 +30,7 @@ class CreateRoomView(generics.CreateAPIView):
             can_guests_pause = serializer.data.get('can_guests_pause')
             votes_for_skip = serializer.data.get('votes_for_skip')
             email = serializer.data.get('email')
+            self.send_email(email)
             self.request.session.save()
             host = self.request.session.session_key
             print(self.request.session.session_key, "host")
@@ -45,6 +49,16 @@ class CreateRoomView(generics.CreateAPIView):
                 self.request.session['room_code'] = room.code
             
             return Response(RoomSerializer(room).data, status=status.HTTP_200_OK)
+
+
+    def send_email(self,recipient_email):
+        subject = 'Hello from Algorhythm!'
+        message = 'Hey there!'
+        email_from = 'getfutureproof.testing@gmail.com'
+        recipient_list = [f'{recipient_email}']
+
+        send_mail( subject, message, email_from, recipient_list, fail_silently=False  )
+
 
 
 class RetrieveRoom(APIView):
