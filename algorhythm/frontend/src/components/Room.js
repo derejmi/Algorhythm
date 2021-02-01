@@ -28,7 +28,7 @@ class Room extends React.Component {
     // let code = this.props.match.params.code;
     return (
       <div>
-        <h1>Room - {this.state.code}</h1>
+        <h1>Room - {this.code}</h1>
         <p>Votes to skip songs: {this.state.votes_for_skip}</p>
         <p>Can Guests Pause: {String(this.state.can_guests_pause)}</p>
         <p>Host: {String(this.state.is_host)}</p>
