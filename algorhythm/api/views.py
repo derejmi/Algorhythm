@@ -24,17 +24,21 @@ class CreateRoomView(generics.CreateAPIView):
 
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
-            guest_can_pause = serializer.data.get('guest_can_pause')
-            votes_to_skip = serializer.data.get('votes_to_skip')
+            can_guests_pause = serializer.data.get('can_guests_pause')
+            votes_for_skip = serializer.data.get('votes_for_skip')
+            email = serializer.data.get('email')
+            self.request.session.save()
             host = self.request.session.session_key
+            print(self.request.session.session_key, "host")
             queryset = Room.objects.filer(host=host)
             if queryset.exists():
                 room = queryset[0]
-                room.guest_can_pause = guest_can_pause
-                room.votes_to_skip = votes_to_skip
-                room.save(update_fields=['guest_can_pause', 'votes_to_skip'])
+                room.can_guets_pause = can_guests_pause
+                room.votes_for_skip = votes_for_skip
+                room.email = email
+                room.save(update_fields=['email', 'can_guests_pause', 'votes_for_skip'])
             else:
-                room = Room(host=host, guest_can_pause=guest_can_pause, votes_to_skip=votes_to_skip)
+                room = Room(host=host, email=email, can_guests_pause=can_guests_pause, votes_for_skip=votes_for_skip)
                 room.save()
             
             return Response(RoomSerializer(room).data, status=status.HTTP_204)
