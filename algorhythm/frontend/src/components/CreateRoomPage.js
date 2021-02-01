@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BackButton } from './BackButton';
 
 class CreateRoomPage extends Component {
   defaultVotes = 2;
@@ -60,9 +61,10 @@ class CreateRoomPage extends Component {
         <input type="number" value={this.state.value} onChange={this.handleChange} />
       </label>
 
-
         <input type="submit" value="Create a Room" />
     </form>
+
+   <BackButton />
     </>
     )
   }
