@@ -52,13 +52,14 @@ class CreateRoomPage extends Component {
 
       <label>
         Guest Control of Playback State
-        <input type="submit" className="answer" value="True" onClick={this.handleCanGuestsPauseChange}/> <br/>
-        <input type="submit" className="answer" value="False" onClick={this.handleCanGuestsPauseChange}/> <br/>
+        <input type="radio" value="True" onClick={this.handleCanGuestsPauseChange}/> 
+
+        <input type="radio" value="False" onClick={this.handleCanGuestsPauseChange}/> 
       </label>
 
       <label>
         Votes Required To Skip Song
-        <input type="number" value={this.state.value} onChange={this.handleChange} />
+        <input type="number" value={this.state.votesToSkip} onChange={this.handleVotesChange} />
       </label>
 
         <input type="submit" value="Create a Room" />
