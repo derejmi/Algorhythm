@@ -1,72 +1,88 @@
 import React, { Component } from "react";
-import { BackButton } from './BackButton';
 
 class CreateRoomPage extends Component {
+  
   defaultVotes = 2;
 
   constructor(props) {
     super(props);
     this.state = {
+      email: 'futureproof@gmail.com',
       can_guests_pause: true,
-      votesToSkip: this.defaultVotes
+      votes_for_skip: this.defaultVotes
     };
-
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleVotesChange = this.handleVotesChange.bind(this);
-    this.handleGuestCanPauseChange = this.handleCanGuestsPauseChange.bind(this);
   }
 
-  handleVotesChange(e) {
-    this.setState({
-      votesToSkip: e.target.value,
-      
-    })
-  }
-
-  handleCanGuestsPauseChange(e) {
+  handleCanGuestPauseChange = e =>  {
+    e.preventDefault();
     this.setState({
       can_guests_pause: e.target.value === 'true' ? true : false,
     })
   }
 
-  handleSubmit() {
+  handleVotesChange = e => {
+    e.preventDefault();
+    this.setState({
+      votes_for_skip: e.target.value
+    })
+  }
+
+  handleEmail = e => {
+    e.preventDefault();
+    this.setState({
+      email: e.target.value
+    })
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
     const requestOptions = {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        votes_to_skip: this.state.votesToSkip,
-        can_guests_pause: this.state.CanGuestsPause,
+        email: this.state.email,
+        votes_for_skip: this.state.votes_for_skip,
+        can_guests_pause: this.state.can_guests_pause,
       }),
     };
     fetch('/api/create-room', requestOptions)
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => {console.log(data)});
+  }
+
+  goBack = e => {
+    this.props.history.goBack("/")
   }
 
   render() {
     return (
-    <>
-    <p>This is the create room page</p>
+      <div>
+        <p>This is the create room page</p>
 
-    <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
 
       <label>
         Guest Control of Playback State
-        <input type="radio" value="True" onClick={this.handleCanGuestsPauseChange}/> 
+        <input type="radio" value="True" onChange={this.handleCanGuestPauseChange} /> True
 
-        <input type="radio" value="False" onClick={this.handleCanGuestsPauseChange}/> 
-      </label>
+        <input type="radio" value="False" onChange={this.handleCanGuestPauseChange} /> False
+      </label><br></br>
 
       <label>
         Votes Required To Skip Song
-        <input type="number" value={this.state.votesToSkip} onChange={this.handleVotesChange} />
-      </label>
+        <input type="number" min="1" max="4" onChange={this.handleVotesChange} />
+      </label><br></br>
+
+      <label>
+        Email
+        <input type="text" onChange={this.handleEmail} />
+      </label><br></br>
 
         <input type="submit" value="Create a Room" />
     </form>
 
-   <BackButton />
-    </>
+      <button onClick={this.goBack}>Back</button>
+      </div>
     )
   }
 }
