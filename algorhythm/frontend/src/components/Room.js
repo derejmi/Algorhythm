@@ -5,12 +5,13 @@ class Room extends React.Component {
     votes_for_skip: 2,
     can_guests_pause: false,
     is_host: false,
-    code: this.props.match.params.code,
     host_email: "",
   };
 
+  code = this.props.match.params.code;
+
   componentDidMount() {
-    const url = `http://localhost:8000/api/get-room?code=${this.state.code}`;
+    const url = `/api/get-room?code=${this.code}`;
     fetch(url)
       .then((r) => r.json())
       .then((room) =>
