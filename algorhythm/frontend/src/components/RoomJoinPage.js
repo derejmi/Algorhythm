@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { TextField, Button, Grid, Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
 export default class RoomJoinPage extends Component {
@@ -15,38 +14,33 @@ export default class RoomJoinPage extends Component {
 
   render() {
     return (
-      <Grid container spacing={1} alignItems="center">
-        <Grid item xs={12}>
-          <Typography variant="h4" component="h4">
+      <div>
+        <div>
+          <h1>
             Join a Room
-          </Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <TextField
-            error={this.state.error}
-            label="Code"
-            placeholder="enter a room code"
-            value={this.state.roomCode}
-            helperText={this.state.error}
-            variant="outlined"
-            onChange={this.handleTextFieldChange}
-          />
-        </Grid>
-        <Grid item xs={12} align="center">
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={this.roomButtonPressed}
-          >
-            Enter Room
-          </Button>
-        </Grid>
-        <Grid item xs={12} align="center">
-          <Button variant="contained" color="secondary" to="/" component={Link}>
-            Back
-          </Button>
-        </Grid>
-      </Grid>
+          </h1>
+        </div>
+        <div>
+          <form>
+            <input
+              placeholder="enter a room code"
+              label="Code"
+              value={this.state.roomCode}
+              helperText={this.state.error}
+              onChange={this.handleTextFieldChange}
+              error={this.state.error}
+            />
+          </form>
+        </div>
+        <div align="center">
+          <button onClick={this.roomButtonPressed}>Enter Room</button>
+        </div>
+        <div align="center">
+          <Link to="/">
+            <button>Back</button>
+          </Link>
+        </div>
+      </div>
     );
   }
   handleTextFieldChange(e) {
