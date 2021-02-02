@@ -24,13 +24,7 @@ class Room extends React.Component {
       );
   }
 
-<<<<<<< HEAD
-  updateShowSettings(value) {
-    this.setState({
-      showSettings: value,
-    });
-  }
-=======
+
   handleLeaveRoom = (e) => {
     const options = {
       method: "POST",
@@ -42,7 +36,16 @@ class Room extends React.Component {
       })
       .then(this.props.history.push("/"));
   };
->>>>>>> 6ea6784d27cae650af01c547a1302496d3ebd4a8
+  
+  updateShowSettings = (value) => {
+    this.setState({
+      showSettings: value,
+    })
+  }
+
+  renderSettingsButton() {
+    
+  }
 
   render() {
     // let code = this.props.match.params.code;
