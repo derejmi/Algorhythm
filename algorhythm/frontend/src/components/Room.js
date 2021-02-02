@@ -1,4 +1,5 @@
 import React from "react";
+import CreateRoomPage from "./CreateRoomPage";
 
 class Room extends React.Component {
   state = {
@@ -48,11 +49,29 @@ class Room extends React.Component {
     })
   }
 
-  renderSettingsButton() {
-    
+  renderSettings= () => {
+    return (
+      <div>
+      <div align="center">
+        <CreateRoomPage update={true} votes_for_skip={this.state.votes_for_skip} guest_can_pause={this.state.guest_can_pause} code updateCallback={() => {}} />
+      </div>
+      <div>
+      <button onClick={() => this.updateShowSettings(false)}>Close</button>
+      </div>
+    </div>
+    )
+  }
+
+  renderSettingsButton = () => {
+    return (
+        <button onClick={() => this.updateShowSettings(true)}>Settings</button>
+    )
   }
 
   render() {
+    if (this.state.showSettings) {
+      return this.renderSettings()
+    }
     // let code = this.props.match.params.code;
     return (
       <div>
@@ -61,6 +80,7 @@ class Room extends React.Component {
         <h2>Can Guests Pause: {String(this.state.can_guests_pause)}</h2>
         <h2>Host: {String(this.state.is_host)}</h2>
         <h2>Host Email:{String(this.state.host_email)} </h2>
+        {this.state.is_host ? this.renderSettingsButton() : null}
         <button onClick={this.handleLeaveRoom}>Leave Room</button>
       </div>
     );
