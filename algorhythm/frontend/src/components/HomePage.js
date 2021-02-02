@@ -12,53 +12,75 @@ import {
 } from "react-router-dom";
 
 export default class HomePage extends Component {
-  
   constructor(props) {
     super(props);
     this.state = {
-      code: null
-    }
+      code: null,
+    };
   }
 
   async componentDidMount() {
-    fetch('/api/user-in-room').then((response) => response.json()).then((data) => {
-      this.setState({
-        code: data.code
-      })
-    })
+    fetch("/api/user-in-room")
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState({
+          code: data.code,
+        });
+      });
   }
 
   showHomeContent = () => {
     return (
       <>
-      <h1>Algorhythm</h1>
-      <div>
-        <Link to="/join">
-          <button>Join a Room</button>
-        </Link> 
-        <Link to="/create">
-          <button>Create a Room</button>
-        </Link>
-      </div>
+        <h1>Algorhythm</h1>
+        <div>
+          <Link to="/join">
+            <button>Join a Room</button>
+          </Link>
+          <Link to="/create">
+            <button>Create a Room</button>
+          </Link>
+        </div>
       </>
     );
-  }
-  
+  };
+
+  clearRoomData = () => {
+    this.setState({
+      code: null,
+    });
+  };
+
   render() {
     return (
       <Router>
         <Switch>
-        <Route exact path="/" render={() => {
-                    return this.state.code ? (
-                      <Redirect to={`/room/${this.state.code}`} />
-                    ) : (
-                      this.showHomeContent()
-                    );
-                  }}>
-                  </Route>
+          <Route
+            exact
+            path="/"
+            render={() => {
+              return this.state.code ? (
+                <Redirect to={`/room/${this.state.code}`} />
+              ) : (
+                this.showHomeContent()
+              );
+            }}
+          ></Route>
           <Route path="/join" component={RoomJoinPage} />
           <Route path="/create" component={CreateRoomPage} />
-          <Route path="/room/:code" component={Room} />
+          <Route
+            path="/room/:code"
+            render={(props) => {
+              return (
+                <Room
+                  {...props}
+                  clearRoom={() => {
+                    this.clearRoomData();
+                  }}
+                />
+              );
+            }}
+          />
         </Switch>
       </Router>
     );
