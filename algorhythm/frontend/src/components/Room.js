@@ -13,7 +13,13 @@ class Room extends React.Component {
   componentDidMount() {
     const url = `/api/get-room?code=${this.code}`;
     fetch(url)
-      .then((r) => r.json())
+      .then((r) => {
+        if (!r.ok) {
+          this.props.clearRoom();
+          this.props.history.push("/");
+        }
+        return r.json();
+      })
       .then((room) =>
         this.setState({
           votes_for_skip: room.votes_for_skip,
@@ -29,11 +35,10 @@ class Room extends React.Component {
       method: "POST",
       headers: { "Content-Type": "application/" },
     };
-    fetch("/api/leave-room")
-      .then((response) => {
-        console.log(response);
-      })
-      .then(this.props.history.push("/"));
+    fetch("/api/leave-room", options).then((response) => {
+      this.props.clearRoom();
+      this.props.history.push("/");
+    });
   };
 
   render() {

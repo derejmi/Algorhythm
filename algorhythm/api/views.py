@@ -15,7 +15,7 @@ from django.conf import settings
 # def main(request):
 #     return HttpResponse("hi")
 
-class RoomView(generics.CreateAPIView):
+class RoomView(generics.ListAPIView):
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
 
