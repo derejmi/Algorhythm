@@ -31,7 +31,7 @@ class CreateRoomView(generics.CreateAPIView):
             can_guests_pause = serializer.data.get('can_guests_pause')
             votes_for_skip = serializer.data.get('votes_for_skip')
             email = serializer.data.get('email')
-            self.send_email(email)
+            # self.send_email(email)
             self.request.session.save()
             host = self.request.session.session_key
             print(self.request.session.session_key, "host")
@@ -91,10 +91,27 @@ class JoinRoom(APIView):
                 room = room_result[0]
                 self.request.session['room_code'] = code
                 return Response({'message':'Room Joined'}, status=status.HTTP_200_OK)
-
-                return Response({'Bad Request':'Invalid Room Code'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'Bad Request':'Invalid Room Code'}, status=status.HTTP_400_BAD_REQUEST)
 
         return Response({'Bad Request': 'Invalid Post Data, did not find a code key'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class LeaveRoom(APIView):
+    def post(self, request, format=None):
+        if 'room_code' in self.request.session:
+            code = self.request.session['room_code']
+            host = self.request.session.session_key
+            host_rooms = Room.objects.filter(host=host)
+            if len(host_rooms) >= 1:
+                room_to_delete = host_rooms[0]
+                room_to_delete.delete()       
+                
+        return Response({'msg': 'Room left successfully'}, status=status.HTTP_200_OK)
+
+
+
+
+
 
 
 class IsUserInRoom(APIView):

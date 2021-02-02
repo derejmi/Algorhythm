@@ -24,21 +24,36 @@ class Room extends React.Component {
       );
   }
 
+<<<<<<< HEAD
   updateShowSettings(value) {
     this.setState({
       showSettings: value,
     });
   }
+=======
+  handleLeaveRoom = (e) => {
+    const options = {
+      method: "POST",
+      headers: { "Content-Type": "application/" },
+    };
+    fetch("/api/leave-room")
+      .then((response) => {
+        console.log(response);
+      })
+      .then(this.props.history.push("/"));
+  };
+>>>>>>> 6ea6784d27cae650af01c547a1302496d3ebd4a8
 
   render() {
     // let code = this.props.match.params.code;
     return (
       <div>
-        <h1>Room - {this.code}</h1>
-        <p>Votes to skip songs: {this.state.votes_for_skip}</p>
-        <p>Can Guests Pause: {String(this.state.can_guests_pause)}</p>
-        <p>Host: {String(this.state.is_host)}</p>
-        <p>Host Email:{String(this.state.host_email)} </p>
+        <h1>Room: {this.code}</h1>
+        <h2>Votes to skip songs: {this.state.votes_for_skip.toString()}</h2>
+        <h2>Can Guests Pause: {String(this.state.can_guests_pause)}</h2>
+        <h2>Host: {String(this.state.is_host)}</h2>
+        <h2>Host Email:{String(this.state.host_email)} </h2>
+        <button onClick={this.handleLeaveRoom}>Leave Room</button>
       </div>
     );
   }
