@@ -52,8 +52,8 @@ class Room extends React.Component {
   renderSettings= () => {
     return (
       <div>
-      <div align="center">
-        <CreateRoomPage update={true} votes_for_skip={this.state.votes_for_skip} guest_can_pause={this.state.guest_can_pause} code updateCallback={() => {}} />
+      <div>
+        <CreateRoomPage update={true} votes_for_skip={this.state.votes_for_skip} can_guests_pause={this.state.can_guests_pause} code updateCallback={() => {}} back={this.props.history} />
       </div>
       <div>
       <button onClick={() => this.updateShowSettings(false)}>Close</button>
