@@ -11,7 +11,7 @@ class Room extends React.Component {
   };
 
   code = this.props.match.params.code;
-  componentDidMount() {
+  componentDidMount = () => {
     const url = `/api/get-room?code=${this.code}`;
     fetch(url)
       .then((r) => {
@@ -53,7 +53,7 @@ class Room extends React.Component {
     return (
       <div>
       <div>
-        <CreateRoomPage update={true} votes_for_skip={this.state.votes_for_skip} can_guests_pause={this.state.can_guests_pause} code={this.props.match.params.code} updateCallback={this.componentDidMount} />
+        <CreateRoomPage update={true} votes_for_skip={this.state.votes_for_skip} can_guests_pause={this.state.can_guests_pause} code={this.props.match.params.code} updateCallback={this.componentDidMount} history={this.props.history}/>
       </div>
       <div>
       <button onClick={() => this.updateShowSettings(false)}>Close</button>
@@ -76,7 +76,7 @@ class Room extends React.Component {
     return (
       <div>
         <h1>Room: {this.code}</h1>
-        <h2>Votes to skip songs: {this.state.votes_for_skip.toString()}</h2>
+        <h2>Votes to skip songs: {this.state.votes_for_skip}</h2>
         <h2>Can Guests Pause: {String(this.state.can_guests_pause)}</h2>
         <h2>Host: {String(this.state.is_host)}</h2>
         <h2>Host Email:{String(this.state.host_email)} </h2>

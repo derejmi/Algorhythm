@@ -15,7 +15,7 @@ def code_creator():
 class Room(models.Model):
     code = models.CharField(max_length=9, default=code_creator, unique=True)
     host = models.CharField(max_length=30, unique=True)
-    email= models.EmailField(max_length = 254) 
+    email = models.EmailField(max_length = 254) 
     can_guests_pause = models.BooleanField(null=False, default=False)
     votes_for_skip = models.IntegerField(null=False, default=2)
     created_date = models.DateTimeField(auto_now_add=True)
