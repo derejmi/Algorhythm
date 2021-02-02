@@ -14,13 +14,13 @@ export default class RoomJoinPage extends Component {
 
   render() {
     return (
-      <div container spacing={1} alignItems="center">
+      <div>
         <div>
-          <h1 variant="h4" component="h4">
+          <h1>
             Join a Room
           </h1>
         </div>
-        <div item xs={12}>
+        <div>
           <form>
             <input
               placeholder="enter a room code"
