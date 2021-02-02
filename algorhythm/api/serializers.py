@@ -17,4 +17,4 @@ class UpdateRoomSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Room
-        fields = ('email','can_guests_pause', 'votes_for_skip', 'code')
+        fields = ('can_guests_pause', 'votes_for_skip', 'code')
