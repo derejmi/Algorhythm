@@ -6,10 +6,10 @@ class Room extends React.Component {
     can_guests_pause: false,
     is_host: false,
     host_email: "",
+    showSettings: false,
   };
 
   code = this.props.match.params.code;
-
   componentDidMount() {
     const url = `/api/get-room?code=${this.code}`;
     fetch(url)
@@ -22,6 +22,12 @@ class Room extends React.Component {
           host_email: room.email,
         })
       );
+  }
+
+  updateShowSettings(value) {
+    this.setState({
+      showSettings: value,
+    });
   }
 
   render() {

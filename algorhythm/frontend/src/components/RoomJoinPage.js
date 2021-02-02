@@ -16,9 +16,7 @@ export default class RoomJoinPage extends Component {
     return (
       <div>
         <div>
-          <h1>
-            Join a Room
-          </h1>
+          <h1>Join a Room</h1>
         </div>
         <div>
           <form>
