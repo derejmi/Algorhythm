@@ -53,7 +53,7 @@ class Room extends React.Component {
     return (
       <div>
       <div>
-        <CreateRoomPage update={true} votes_for_skip={this.state.votes_for_skip} can_guests_pause={this.state.can_guests_pause} code updateCallback={() => {}} />
+        <CreateRoomPage update={true} votes_for_skip={this.state.votes_for_skip} can_guests_pause={this.state.can_guests_pause} code={this.props.match.params.code} updateCallback={this.componentDidMount} />
       </div>
       <div>
       <button onClick={() => this.updateShowSettings(false)}>Close</button>
