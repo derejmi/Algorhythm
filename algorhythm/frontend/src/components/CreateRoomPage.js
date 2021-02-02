@@ -64,12 +64,14 @@ class CreateRoomPage extends Component {
             <input
               type="radio"
               value="True"
+              name="play"
               onChange={this.handleCanGuestPauseChange}
             />{" "}
             True
             <input
               type="radio"
               value="False"
+              name="play"
               onChange={this.handleCanGuestPauseChange}
             />{" "}
             False
