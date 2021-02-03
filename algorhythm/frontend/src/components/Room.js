@@ -68,6 +68,14 @@ class Room extends React.Component {
       });
   };
 
+  // getLyrics = () => {
+  //   fetch('https://api.lyrics.ovh/v1/artist/title')
+  //     .then((response) => response.json())
+  //     .then(data => {
+  //       // show lyrics
+  //     })
+  // }
+
   authenticateSpotify = () => {
     fetch("/spotify/is-authenticated")
       .then((response) => response.json())
@@ -136,6 +144,8 @@ class Room extends React.Component {
         <h1>Room: {this.code}</h1>
 
         <MusicPlayer {...this.state.song} />
+
+        {/* getLyrics() */}
 
         {/* {this.state.song} */}
         {this.state.is_host ? this.renderSettingsButton() : null}

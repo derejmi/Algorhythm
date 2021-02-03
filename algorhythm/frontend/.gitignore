@@ -3,3 +3,5 @@ algorhythm/api/__pycache__/
 algorhythm/db.sqlite3
 algorhythm/frontend/__pycache__/
 algorhythm/frontend/static/frontend/main.js
+.env
+coverage
