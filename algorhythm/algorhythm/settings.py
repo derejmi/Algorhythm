@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# ALLOWED_HOSTS = ['0.0.0.1', ''] # Allowed to run outside of localhost if added ip in empty ''
+
 
 # Application definition
 
