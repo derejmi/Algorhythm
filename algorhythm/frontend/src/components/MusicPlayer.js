@@ -20,6 +20,10 @@ class MusicPlayer extends Component {
     fetch("/spotify/play", requestOptions);
   }
 
+  // getLyrics =() => {
+  //   fetch('https://api.lyrics.ovh/v1/artist/title')
+  // }
+
   render() {
     const songProgress = (this.props.time / this.props.duration) * 100;
     return (
