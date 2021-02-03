@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .credentials import REDIRECT_URI,CLIENT_SECRET,CLIENT_ID
+from .credentials import REDIRECT_URI, CLIENT_SECRET, CLIENT_ID
 from rest_framework.views import APIView
 from requests import Request, post
 from rest_framework import status
@@ -139,7 +139,7 @@ class PlaySong(APIView):
 class SkipSong(APIView):
     def post(self, response, format=None):
         room_code = self.request.session.get('room_code')
-        room = Room.objects.filter(code=room_code)
+        room = Room.objects.filter(code=room_code)[0]
         votes = Vote.objects.filter(room=room, song_id=room.current_song)
         required_votes = room.votes_for_skip
 
