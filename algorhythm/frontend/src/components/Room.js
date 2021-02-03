@@ -1,18 +1,34 @@
 import React from "react";
 import CreateRoomPage from "./CreateRoomPage";
+import MusicPlayer from "./MusicPlayer";
 
 class Room extends React.Component {
+  constructor(props) {
+    super(props);
+    this.getRoom();
+  }
+
   state = {
     votes_for_skip: 2,
     can_guests_pause: false,
     is_host: false,
     host_email: "",
     showSettings: false,
-    spotifyAuthenticated: false
+    spotifyAuthenticated: false,
+    song: {},
   };
 
   code = this.props.match.params.code;
-  componentDidMount = () => {
+
+  componentDidMount() {
+    this.interval = setInterval(this.getSong, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  getRoom = () => {
     const url = `/api/get-room?code=${this.code}`;
     fetch(url)
       .then((r) => {
@@ -30,24 +46,42 @@ class Room extends React.Component {
           host_email: room.email,
         });
         if (this.state.is_host) {
-          this.authenticateSpotify()
+          this.authenticateSpotify();
+          // this.getSong();
         }
         // console.log(this.state.spotifyAuthenticated , "authenticated")
-
       });
-  }
+  };
 
+  getSong = () => {
+    fetch("/spotify/current-song")
+      .then((r) => {
+        if (!r.ok) {
+          return {};
+        } else {
+          return r.json();
+        }
+      })
+      .then((songData) => {
+        this.setState({ song: songData });
+        console.log(songData);
+      });
+  };
 
   authenticateSpotify = () => {
-    fetch('/spotify/is-authenticated').then((response) => response.json()).then(data => {
-      this.setState({spotifyAuthenticated: data.status});
-      if (!data.status) {
-        fetch('/spotify/get-auth').then((response) => response.json()).then(data => {
-          window.location.replace(data.url)
-        })
-      }
-    })
-  }
+    fetch("/spotify/is-authenticated")
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState({ spotifyAuthenticated: data.status });
+        if (!data.status) {
+          fetch("/spotify/get-auth")
+            .then((response) => response.json())
+            .then((data) => {
+              window.location.replace(data.url);
+            });
+        }
+      });
+  };
 
   handleLeaveRoom = (e) => {
     const options = {
@@ -59,44 +93,51 @@ class Room extends React.Component {
       this.props.history.push("/");
     });
   };
-  
+
   updateShowSettings = (value) => {
     this.setState({
       showSettings: value,
-    })
-  }
+    });
+  };
 
-  renderSettings= () => {
+  renderSettings = () => {
     return (
       <div>
-      <div>
-        <CreateRoomPage update={true} votes_for_skip={this.state.votes_for_skip} can_guests_pause={this.state.can_guests_pause} code={this.props.match.params.code} updateCallback={this.componentDidMount} history={this.props.history}/>
+        <div>
+          <CreateRoomPage
+            update={true}
+            votes_for_skip={this.state.votes_for_skip}
+            can_guests_pause={this.state.can_guests_pause}
+            code={this.props.match.params.code}
+            updateCallback={this.getRoom}
+            history={this.props.history}
+          />
+        </div>
+        <div>
+          <button onClick={() => this.updateShowSettings(false)}>Close</button>
+        </div>
       </div>
-      <div>
-      <button onClick={() => this.updateShowSettings(false)}>Close</button>
-      </div>
-    </div>
-    )
-  }
+    );
+  };
 
   renderSettingsButton = () => {
     return (
-        <button onClick={() => this.updateShowSettings(true)}>Settings</button>
-    )
-  }
+      <button onClick={() => this.updateShowSettings(true)}>Settings</button>
+    );
+  };
 
   render() {
     if (this.state.showSettings) {
-      return this.renderSettings()
+      return this.renderSettings();
     }
     // let code = this.props.match.params.code;
     return (
       <div>
         <h1>Room: {this.code}</h1>
-        <h2>Votes to skip songs: {this.state.votes_for_skip}</h2>
-        <h2>Can Guests Pause: {String(this.state.can_guests_pause)}</h2>
-        <h2>Host: {String(this.state.is_host)}</h2>
-        <h2>Host Email:{String(this.state.host_email)} </h2>
+
+        <MusicPlayer {...this.state.song} />
+
+        {/* {this.state.song} */}
         {this.state.is_host ? this.renderSettingsButton() : null}
         <button onClick={this.handleLeaveRoom}>Leave Room</button>
       </div>
@@ -105,3 +146,8 @@ class Room extends React.Component {
 }
 
 export default Room;
+
+//  <h2>Votes to skip songs: {this.state.votes_for_skip}</h2>
+//         <h2>Can Guests Pause: {String(this.state.can_guests_pause)}</h2>
+//         <h2>Host: {String(this.state.is_host)}</h2>
+//         <h2>Host Email:{String(this.state.host_email)} </h2>
