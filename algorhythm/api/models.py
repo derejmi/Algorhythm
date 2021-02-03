@@ -19,4 +19,4 @@ class Room(models.Model):
     can_guests_pause = models.BooleanField(null=False, default=False)
     votes_for_skip = models.IntegerField(null=False, default=2)
     created_date = models.DateTimeField(auto_now_add=True)
-
+    current_song = models.CharField(max_length=50, null=True)

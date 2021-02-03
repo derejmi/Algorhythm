@@ -3,6 +3,13 @@ import { LinearProgress } from "@material-ui/core";
 
 class MusicPlayer extends Component {
 
+  skipSong() {
+    const requestOptions = {
+      method: "POST",
+      headers: {'Content-Type': 'application/json'}
+    };
+    fetch("/spotify/skip", requestOptions)
+  }
 
   pauseSong() {
     const requestOptions = {
@@ -39,7 +46,7 @@ class MusicPlayer extends Component {
 
         <img src="https://img.icons8.com/clouds/100/000000/play.png" onClick={ () => { this.props.is_playing ? this.pauseSong() : this.playSong() } } />
 
-        <img src="https://img.icons8.com/clouds/100/000000/play.png" />
+        <img src="https://img.icons8.com/dusk/64/000000/end.png" onClick={ () => this.skipSong() } /> <div>{this.props.votes} /{" "}{this.props.required_votes}</div>
 
         <LinearProgress variant="determinate" value={songProgress} />
       </>
