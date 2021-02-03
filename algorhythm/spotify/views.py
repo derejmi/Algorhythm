@@ -139,7 +139,7 @@ class PlaySong(APIView):
 class SkipSong(APIView):
     def post(self, response, format=None):
         room_code = self.request.session.get('room_code')
-        room = Room.objects.filter(code=room_code)
+        room = Room.objects.filter(code=room_code)[0]
         votes = Vote.objects.filter(room=room, song_id=room.current_song)
         required_votes = room.votes_for_skip
 
