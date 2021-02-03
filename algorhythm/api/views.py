@@ -31,7 +31,7 @@ class CreateRoomView(generics.CreateAPIView):
             can_guests_pause = serializer.data.get('can_guests_pause')
             votes_for_skip = serializer.data.get('votes_for_skip')
             email = serializer.data.get('email')
-            # self.send_email(email)
+            self.send_email(email)
             self.request.session.save()
             host = self.request.session.session_key
             print(self.request.session.session_key, "host")
