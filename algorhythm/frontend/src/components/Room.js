@@ -8,6 +8,7 @@ class Room extends React.Component {
     is_host: false,
     host_email: "",
     showSettings: false,
+    spotifyAuthenticated: false
   };
 
   code = this.props.match.params.code;
@@ -21,16 +22,32 @@ class Room extends React.Component {
         }
         return r.json();
       })
-      .then((room) =>
+      .then((room) => {
         this.setState({
           votes_for_skip: room.votes_for_skip,
           can_guests_pause: room.can_guests_pause,
           is_host: room.is_host,
           host_email: room.email,
-        })
-      );
+        });
+        if (this.state.is_host) {
+          this.authenticateSpotify()
+        }
+        // console.log(this.state.spotifyAuthenticated , "authenticated")
+
+      });
   }
 
+
+  authenticateSpotify = () => {
+    fetch('/spotify/is-authenticated').then((response) => response.json()).then(data => {
+      this.setState({spotifyAuthenticated: data.status});
+      if (!data.status) {
+        fetch('/spotify/get-auth').then((response) => response.json()).then(data => {
+          window.location.replace(data.url)
+        })
+      }
+    })
+  }
 
   handleLeaveRoom = (e) => {
     const options = {
