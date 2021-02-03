@@ -20,8 +20,6 @@ class CreateRoomPage extends Component {
       successMsg: "",
       errorMsg: "",
     };
-
-
   }
 
   handleCanGuestPauseChange = (e) => {
@@ -147,9 +145,9 @@ class CreateRoomPage extends Component {
             />
           </label>
           <br></br>
-          { this.props.update ? null : this.renderCreateButton()}
+          {this.props.update ? null : this.renderCreateButton()}
         </form>
-       {this.props.update ? this.renderUpdateButton() : null }
+        {this.props.update ? this.renderUpdateButton() : null}
       </div>
     );
   }
