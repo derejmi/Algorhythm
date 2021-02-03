@@ -10,7 +10,7 @@ class Lyrics extends React.Component {
         artist: this.props.artist,
         title: this.props.title,
       });
-      this.interval = setInterval(this.fetchLyrics, 1000);
+      this.interval = setInterval(this.fetchLyrics, 2000);
     }
   }
 
@@ -42,7 +42,9 @@ class Lyrics extends React.Component {
 
       const url = `https://api.lyrics.ovh/v1/${artist}/${title}`;
       fetch(url)
-        .then((r) => r.json())
+        .then((r) => {
+          if (r.ok) return r.json();
+        })
         .then((data) => {
           console.log(url, "url");
           console.log(data, "data");
