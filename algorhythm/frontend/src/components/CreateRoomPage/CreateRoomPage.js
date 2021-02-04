@@ -23,7 +23,7 @@ class CreateRoomPage extends Component {
   }
 
   handleCanGuestPauseChange = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     var a = e.target.value;
     console.log(a);
     this.setState({
@@ -32,14 +32,14 @@ class CreateRoomPage extends Component {
   };
 
   handleVotesChange = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     this.setState({
       votes_for_skip: e.target.value,
     });
   };
 
   handleEmail = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     this.setState({
       email: e.target.value,
     });
@@ -121,12 +121,14 @@ class CreateRoomPage extends Component {
           <label id="guest">
             Guest Control of Playback State
             <input
+              id="pause-true"
               type="radio"
               value="true"
               onChange={this.handleCanGuestPauseChange}
             />{" "}
             True
             <input
+              id="pause-false"
               type="radio"
               value="false"
               onChange={this.handleCanGuestPauseChange}
@@ -137,6 +139,7 @@ class CreateRoomPage extends Component {
           <label id="votes">
             Votes Required To Skip Song
             <input
+              id="votes-input"
               type="number"
               min="1"
               max="4"
