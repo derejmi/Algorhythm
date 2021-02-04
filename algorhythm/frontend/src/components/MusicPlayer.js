@@ -2,28 +2,28 @@ import React, { Component } from "react";
 import { LinearProgress } from "@material-ui/core";
 
 class MusicPlayer extends Component {
-
   skipSong() {
     const requestOptions = {
       method: "POST",
-      headers: {'Content-Type': 'application/json'}
+      headers: { "Content-Type": "application/json" },
     };
-    fetch("/spotify/skip", requestOptions)
+    console.log("skip");
+    fetch("/spotify/skip", requestOptions);
   }
 
   pauseSong() {
     const requestOptions = {
-      method: "PUT", 
-      headers: { "Content-Type": "application/json"}, 
-    }
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+    };
     fetch("/spotify/pause", requestOptions);
   }
 
   playSong() {
     const requestOptions = {
-      method: "PUT", 
-      headers: { "Content-Type": "application/json"}, 
-    }
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+    };
     fetch("/spotify/play", requestOptions);
   }
 
@@ -41,13 +41,29 @@ class MusicPlayer extends Component {
 
         {/* {this.props.is_playing ? PAUSEBUTTON : PLAYBUTTON} */}
         <h2>{this.props.title}</h2>
-       <h3>{this.props.artist}</h3>
+       {/* <h3>{this.props.artist}</h3>
         <img src={this.props.image_url} height="300px" width="300px"/>
 
         <img src="https://img.icons8.com/dusk/64/000000/play.png" onClick={ () => { this.props.is_playing ? this.pauseSong() : this.playSong() } } />
 
-        <img src="https://img.icons8.com/dusk/64/000000/end.png" onClick={ () => this.skipSong() } /> <div>{this.props.votes} /{" "}{this.props.required_votes}</div>
+        <img src="https://img.icons8.com/dusk/64/000000/end.png" onClick={ () => this.skipSong() } /> <div>{this.props.votes} /{" "}{this.props.required_votes}</div> */}
 
+        <h3>{this.props.artist}</h3>
+        <img src={this.props.image_url} height="300px" width="300px" />
+        <img
+          src="https://img.icons8.com/dusk/64/000000/play.png"
+          onClick={() => {
+            this.props.is_playing ? this.pauseSong() : this.playSong();
+          }}
+        />
+        <img
+          src="https://img.icons8.com/dusk/64/000000/end.png"
+          onClick={() => this.skipSong()}
+        />{" "}
+        <div>
+          {this.props.votes} / {this.props.required_votes}
+        </div>
+{/*  */}
         <LinearProgress variant="determinate" value={songProgress} />
       </>
     );
