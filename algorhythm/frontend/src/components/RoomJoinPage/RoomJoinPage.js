@@ -47,7 +47,6 @@ export default class RoomJoinPage extends Component {
     });
   }
   roomButtonPressed() {
-    console.log(this.state.roomCode);
     const requestOptions = {
       method: "POST",
       headers: { "content-type": "application/JSON" },

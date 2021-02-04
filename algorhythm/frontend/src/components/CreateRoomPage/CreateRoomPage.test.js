@@ -8,6 +8,8 @@ describe("CreateRoomPage", () => {
   const staticContext = undefined;
   const update = false;
   const votes_for_skip = 2;
+  const push = jest.fn();
+  const history = { push: push };
 
   beforeEach(() => {
     updateCallback = jest.fn();
@@ -18,6 +20,7 @@ describe("CreateRoomPage", () => {
         staticContext={staticContext}
         update={update}
         votes_for_skip={votes_for_skip}
+        history={history}
       />
     );
   });
@@ -25,6 +28,10 @@ describe("CreateRoomPage", () => {
   //test for p greeting
   test("It has a paragraph welcoming the user", () => {
     expect(component.find("p").text()).toContain("This is the");
+  });
+
+  test("CreateRoom exits", () => {
+    expect(component).toExist;
   });
 
   //test for form
@@ -78,9 +85,29 @@ describe("CreateRoomPage", () => {
   });
 
   test("handleEmail", () => {
-    let input = component.find("#votes-input");
+    let input = component.find("#email-submit");
     input.simulate("change", { target: { value: "2" } });
     expect(component.state("can_guests_pause")).toBe(true);
+  });
+
+  test("Create Button area exists", () => {
+    let createArea = component.find("#create-button");
+    let label = createArea.find("label");
+    expect(label.text()).toContain("Email");
+    let emailSubmit = createArea.find("#email-submit");
+    expect(emailSubmit.props().type).toBe("text");
+    let submitBtn = createArea.find("#submit-btn");
+    expect(submitBtn.props().type).toBe("submit");
+    let backBtn = createArea.find("#back");
+    expect(backBtn.text()).toContain("Back");
+  });
+
+  test("Back Button Works", () => {
+    let backBtn = component.find("#back");
+    let page = window.location.href;
+    backBtn.simulate("click");
+    let newPage = window.location.href;
+    expect(newPage).toBe("http://localhost/");
   });
 
   //test for a button
@@ -88,5 +115,32 @@ describe("CreateRoomPage", () => {
   test("It has a form for room details", () => {
     let button = component.find("button");
     expect(button).toExist;
+  });
+});
+
+describe("CreateRoomPage", () => {
+  let component, updateCallback;
+
+  const roomCode = "FGWTw";
+  const staticContext = undefined;
+  const update = true;
+  const votes_for_skip = 2;
+
+  beforeEach(() => {
+    updateCallback = jest.fn();
+    component = shallow(
+      <CreateRoomPage
+        updateCallback={updateCallback}
+        roomCode={roomCode}
+        staticContext={staticContext}
+        update={update}
+        votes_for_skip={votes_for_skip}
+      />
+    );
+  });
+
+  //test for p greeting
+  test("It has a update button", () => {
+    expect(component.find("#update-button").text()).toContain("Update Room");
   });
 });

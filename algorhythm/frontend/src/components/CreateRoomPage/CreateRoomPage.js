@@ -91,21 +91,27 @@ class CreateRoomPage extends Component {
 
   renderCreateButton = (e) => {
     return (
-      <div>
+      <div id="create-button">
         <label>
           Email
-          <input type="text" onChange={this.handleEmail} />
+          <input id="email-submit" type="text" onChange={this.handleEmail} />
         </label>
 
-        <input type="submit" value="Create a Room" />
+        <input id="submit-btn" type="submit" value="Create a Room" />
 
-        <button onClick={this.goBack}>Back</button>
+        <button id="back" onClick={this.goBack}>
+          Back
+        </button>
       </div>
     );
   };
 
   renderUpdateButton = (e) => {
-    return <button onClick={this.handleUpdateButtonClick}>Update Room</button>;
+    return (
+      <button id="update-button" onClick={this.handleUpdateButtonClick}>
+        Update Room
+      </button>
+    );
   };
 
   render() {
