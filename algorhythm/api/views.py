@@ -31,7 +31,6 @@ class CreateRoomView(generics.CreateAPIView):
             can_guests_pause = serializer.data.get('can_guests_pause')
             votes_for_skip = serializer.data.get('votes_for_skip')
             email = serializer.data.get('email')
-            self.send_email(email)
             self.request.session.save()
             host = self.request.session.session_key
             print(self.request.session.session_key, "host")
@@ -48,18 +47,21 @@ class CreateRoomView(generics.CreateAPIView):
                 room = Room(host=host, email=email, can_guests_pause=can_guests_pause, votes_for_skip=votes_for_skip)
                 room.save()
                 self.request.session['room_code'] = room.code
+                code = room.code
+                self.send_email(email,code)
                 return Response(RoomSerializer(room).data, status=status.HTTP_201_CREATED)
             
             return Response({'Bad Request': 'Invalid data...'}, status=status.HTTP_400_BAD_REQUEST)
 
 
-    def send_email(self,recipient_email):
+    def send_email(self, recipient_email,code):
         subject = 'Hello from Algorhythm!'
-        message = 'Hey there!'
+        message = f'Hey there! Your new music room is ready! Share this code {code} with your friends! Access Algorythm here: http://127.0.0.1:8000/'
+        
         email_from = 'getfutureproof.testing@gmail.com'
         recipient_list = [f'{recipient_email}']
 
-        send_mail( subject, message, email_from, recipient_list, fail_silently=False  )
+        send_mail( subject, message, email_from, recipient_list, fail_silently=False )
 
 
 
