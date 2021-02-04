@@ -50,17 +50,19 @@ class MusicPlayer extends Component {
 
         <h3>{this.props.artist}</h3>
         <img src={this.props.image_url} height="300px" width="300px" />
-        <img
-          src="https://img.icons8.com/dusk/64/000000/play.png"
+        <div>
+        <div
           onClick={() => {
             this.props.is_playing ? this.pauseSong() : this.playSong();
           }}
-        />
+        >   {this.props.is_playing ? <img src="https://img.icons8.com/dusk/64/000000/pause.png" /> : <img src="https://img.icons8.com/dusk/64/000000/play.png" /> }     </div>
+
+        {/*  */}
+
         <img
           src="https://img.icons8.com/dusk/64/000000/end.png"
           onClick={() => this.skipSong()}
         />{" "}
-        <div>
           {this.props.votes} / {this.props.required_votes}
         </div>
 {/*  */}
