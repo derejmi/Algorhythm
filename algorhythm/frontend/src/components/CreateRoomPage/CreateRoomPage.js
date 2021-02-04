@@ -118,7 +118,7 @@ class CreateRoomPage extends Component {
         {this.state.responseMsg ? alert(this.state.responseMsg) : null}
         <p>This is the {title} Page</p>
         <form onSubmit={this.handleSubmit}>
-          <label>
+          <label id="guest">
             Guest Control of Playback State
             <input
               type="radio"
@@ -134,7 +134,7 @@ class CreateRoomPage extends Component {
             False
           </label>
           <br></br>
-          <label>
+          <label id="votes">
             Votes Required To Skip Song
             <input
               type="number"

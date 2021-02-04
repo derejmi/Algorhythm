@@ -9,6 +9,7 @@ requests = "*"
 Django = "*"
 pylint = "*"
 pep8 = "*"
+python-decouple = "*"
 
 [dev-packages]
 
