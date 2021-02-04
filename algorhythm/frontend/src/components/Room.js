@@ -1,6 +1,7 @@
 import React from "react";
 import CreateRoomPage from "./CreateRoomPage";
 import MusicPlayer from "./MusicPlayer";
+import Lyrics from "./Lyrics";
 
 class Room extends React.Component {
   constructor(props) {
@@ -150,6 +151,7 @@ class Room extends React.Component {
         {/* {this.state.song} */}
         {this.state.is_host ? this.renderSettingsButton() : null}
         <button onClick={this.handleLeaveRoom}>Leave Room</button>
+        <Lyrics {...this.state.song} />
       </div>
     );
   }
