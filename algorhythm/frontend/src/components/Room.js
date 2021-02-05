@@ -112,8 +112,8 @@ class Room extends React.Component {
 
   renderSettings = () => {
     return (
-      <div>
-        <div>
+      <div id ="update_content">
+        <div id="Create_room">
           <CreateRoomPage
             update={true}
             votes_for_skip={this.state.votes_for_skip}
@@ -122,8 +122,6 @@ class Room extends React.Component {
             updateCallback={this.getRoom}
             history={this.props.history}
           />
-        </div>
-        <div>
           <button onClick={() => this.updateShowSettings(false)}>Close</button>
         </div>
       </div>
@@ -142,8 +140,8 @@ class Room extends React.Component {
     }
     // let code = this.props.match.params.code;
     return (
-      <div>
-        <h1>Room: {this.code}</h1>
+      <div id="content">
+        <h1 id="room_id">Room: {this.code}</h1>
 
         <MusicPlayer {...this.state.song} />
 

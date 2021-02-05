@@ -1,77 +1,130 @@
+html {
+  margin-top: 0;
+}
+
 html,
 body {
   height: 100%;
-  margin: 0;
-  padding: 10px !important;
+  margin: 10px;
+  padding: 2vh;
+  display: absolute;
+  justify-content: center;
+  align-items: center;
+  display: block;
 }
 
 
 #main {
-  position: fixed;
+  position: relative;
   width: 100%;
   height: 100%;
   left: 0;
-  top: 0;
 }
 
 #app {
   width: 100%;
   height: 100%;
-  
-}
-
-.center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 #Lyrics {
   background-color: #fff;
-  border-style: dashed;
+  border-style: solid;
   text-align: center;
-}
-
-#Lyrics h1 {
+  width: 100%;
+  height: 100%;
+  padding:0;
+  margin: 0;
   font-size: 25px;
   font-weight: 600;
+  font-family: Raleway,HelveticaNeue,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
+
+#update_content {
+  border-style: solid;
+}
+
 
 button {
   background-color: #fff !important;
+  margin-right: 2vh;
 }
+
+#media_content  {
+  justify-content: center;
+  align-items: center;
+}
+
+#media_content #artist_img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#buttons {
+  display: grid;
+}
+
+#play_pause {
+  align-items: center;;
+}
+
+#play_pause img {
+  padding: 0 10px;
+  display: inline;
+ 
+}
+
+#play_pause .votes {
+  padding: 0 10px;
+  display: inline;
+  font-size: 25px;
+ 
+}
+
+#content_body {
+  justify-content: center;
+  align-items: center;
+
+}
+
+#content_body p {
+  font-size: 20px;
+  line-height: 20px;
+  text-align: left;
+  margin-bottom: 10px;
+  padding: 0;
+}
+
+#content_body label {
+padding: 0;
+margin: 0;
+}
+
+#content_body text {
+  font-size: calc(20px + 18vh);
+  }
+
+#content_body input {
+  padding: 0px 0px 0px 10px;
+  margin: 0;
+  }
+
+
 
 @import url("https://fonts.googleapis.com/css?family=Sacramento&display=swap");
 
-h2, h3 {
+h1, h2, h3 {
   font-size: calc(20px + 18vh);
   line-height: calc(20px + 20vh);
-/*   text-shadow: 0 0 5px #f562ff, 0 0 15px #f562ff, 0 0 25px #f562ff,
-    0 0 20px #f562ff, 0 0 30px #890092, 0 0 80px #890092, 0 0 80px #890092;
-  color: #fccaff; */
-  text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
-    color: #fff6a9;
-  /* font-family: "Sacramento", cursive; */
-  font-family: Raleway,HelveticaNeue,"Helvetica Neue",Helvetica,Arial,sans-serif;
   text-align: center;
-  animation: blink 12s infinite;
-  -webkit-animation: blink 12s infinite;
 }
 
-body {
-  padding: 2vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent 7px,
-    rgba(255, 254, 254, 0.8) 9px,
-    rgba(255, 255, 255, 0.8) 13px,
-    transparent 13px
-  );
+h2, h3 {
+  text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+  color: #fff6a9;
+  font-family: Raleway,HelveticaNeue,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  animation: blink 12s infinite;
+  -webkit-animation: blink 12s infinite;
 }
 
 @-webkit-keyframes blink {

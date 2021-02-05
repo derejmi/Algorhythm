@@ -9,7 +9,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="center">
+      <div className="center" align="center">
         <HomePage />
         {/* <h1>Hi</h1> */}
       </div>

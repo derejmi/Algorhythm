@@ -111,21 +111,21 @@ class CreateRoomPage extends Component {
   render() {
     const title = this.props.update ? "Update Room" : "Create a Room";
     return (
-      <div>
+      <div id="content_body">
         {/* <Collaspe in={this.state.errorMsg != "" || this.state.successMsg != ""}>
           {this.state.successMsg}
         </Collaspe> */}
         {this.state.responseMsg ? alert(this.state.responseMsg) : null}
-        <p>This is the {title} Page</p>
+        <h1>This is the {title} Page</h1>
         <form onSubmit={this.handleSubmit}>
           <label>
-            Guest Control of Playback State
+            Guest Control of Playback State {" "}
             <input
               type="radio"
               value="true"
               onChange={this.handleCanGuestPauseChange}
             />{" "}
-            True
+            True {" "}
             <input
               type="radio"
               value="false"
@@ -135,7 +135,7 @@ class CreateRoomPage extends Component {
           </label>
           <br></br>
           <label>
-            Votes Required To Skip Song
+            Votes Required To Skip Song {" "}
             <input
               type="number"
               min="1"

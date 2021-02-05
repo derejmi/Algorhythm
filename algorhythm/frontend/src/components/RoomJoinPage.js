@@ -14,11 +14,11 @@ export default class RoomJoinPage extends Component {
 
   render() {
     return (
-      <div>
-        <div>
+      <div id="1-">
+        <div id="2">
           <h1>Join a Room</h1>
         </div>
-        <div>
+        <div id="3">
           <form>
             <input
               placeholder="enter a room code"

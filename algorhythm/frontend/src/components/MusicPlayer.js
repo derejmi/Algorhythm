@@ -35,38 +35,37 @@ class MusicPlayer extends Component {
     const songProgress = (this.props.time / this.props.duration) * 100;
     return (
       <>
-        {/* {* <h1>{this.props.title}</h1>
-
-     ≈
-
-        {/* {this.props.is_playing ? PAUSEBUTTON : PLAYBUTTON} */}
-        <h2>{this.props.title}</h2>
-       {/* <h3>{this.props.artist}</h3>
-        <img src={this.props.image_url} height="300px" width="300px"/>
-
-        <img src="https://img.icons8.com/dusk/64/000000/play.png" onClick={ () => { this.props.is_playing ? this.pauseSong() : this.playSong() } } />
-
-        <img src="https://img.icons8.com/dusk/64/000000/end.png" onClick={ () => this.skipSong() } /> <div>{this.props.votes} /{" "}{this.props.required_votes}</div> */}
-
-        <h3>{this.props.artist}</h3>
-        <img src={this.props.image_url} height="300px" width="300px" />
-        <div>
-        <div
-          onClick={() => {
-            this.props.is_playing ? this.pauseSong() : this.playSong();
-          }}
-        >   {this.props.is_playing ? <img src="https://img.icons8.com/dusk/64/000000/pause.png" /> : <img src="https://img.icons8.com/dusk/64/000000/play.png" /> }     </div>
-
-        {/*  */}
-
-        <img
-          src="https://img.icons8.com/dusk/64/000000/end.png"
-          onClick={() => this.skipSong()}
-        />{" "}
-          {this.props.votes} / {this.props.required_votes}
+        <div id="media_content">
+          <h2>{this.props.title}</h2>
+          <h3>{this.props.artist}</h3>
+          <img id="artist_img"src={this.props.image_url} />
+          <div id="buttons">
+            <div
+              id="play_pause"
+              onClick={() => {
+                this.props.is_playing ? this.pauseSong() : this.playSong();
+              }}
+            >
+              {" "}
+              {this.props.is_playing ? (
+                <img src="https://img.icons8.com/android/24/000000/pause.png" />
+              ) : (
+                <img src="https://img.icons8.com/android/24/000000/play.png" />
+              )}{" "}
+              <img
+                src="https://img.icons8.com/android/24/000000/end.png"
+                onClick={() => this.skipSong()}
+              />{" "}
+              <div class="votes">{this.props.votes} / {this.props.required_votes}</div>
+            </div>
+          </div>
+          {/*  */}
+          <LinearProgress
+            color="primary"
+            variant="determinate"
+            value={songProgress}
+          />
         </div>
-{/*  */}
-        <LinearProgress variant="determinate" value={songProgress} />
       </>
     );
   }
