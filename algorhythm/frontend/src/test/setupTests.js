@@ -8,3 +8,4 @@ configure({ adapter: new Adapter() });
 global.React = React;
 global.shallow = shallow;
 global.sinon = sinon;
+// global.fetch = fetch;

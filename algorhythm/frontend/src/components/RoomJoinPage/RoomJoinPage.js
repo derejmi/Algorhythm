@@ -31,7 +31,9 @@ export default class RoomJoinPage extends Component {
           </form>
         </div>
         <div align="center">
-          <button onClick={this.roomButtonPressed}>Enter Room</button>
+          <button id="enter-room" onClick={this.roomButtonPressed}>
+            Enter Room
+          </button>
         </div>
         <div align="center">
           <Link to="/">
