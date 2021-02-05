@@ -1,30 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Mega&family=Nunito+Sans&display=swap');
+
 html,
 body {
-  height: 100%;
+  height: 100vh;
   margin: 0;
-  padding: 10px !important;
+  text-align: center;
+  vertical-align: middle;
+  /* padding: 10px !important; */
+} 
+
+* {
+  box-sizing: border-box;
+  margin: 0; 
+  padding: 0;
 }
 
+#algoTitle {
+  color: white;
+  font-family: 'Lexend Mega', sans-serif;
+  /* background-color: green; */
+}
 
-#main {
-  position: fixed;
-  width: 100%;
-  height: 100%;
+.createSubmit {
+  background-color: rgb(206, 84, 155);
+}
+
+.joinSubmit {
+  background-color: rgb(33, 180, 199);
+}
+
+/* // font-family: 'Nunito Sans', sans-serif; */
+
+/* #main { */
+  /* position: fixed; */
+  /* width: 100vw;
+  height: 100vh;
   left: 0;
   top: 0;
-}
+} */
 
 #app {
-  width: 100%;
-  height: 100%;
-  
+  width: 100vw;
+  height: 100vh;
 }
 
-.center {
+/* .center {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+} */
+
+.mainPage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.white {
+  color: white;
+}
+
+input {
+  margin-left: 20px;
+  padding: 10px;
+}
+
+/* .center {
+  margin-top: 50%;
+} */
+
+.create {
+  color: white;
+}
+
+#extra {
+  border: 2px dotted green;
+  display: flex;
+}
+
+#roomCode {
+  /* border: 4px solid green; */
+  text-align: center;
+  color: white;
+}
+
+/* #musicDiv {
+  border: 4px solid purple;
+  text-align: center;
+} */
+
+#titleImg {
+  /* border: 10px dotted pink; */
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+#topItem {
+  /* border: 5px solid rgb(88, 201, 94); */
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.musicItem {
+  /* border: 5px dotted red; */
+  align-content: center;
+  /* padding: 50px; */
+}
+
+#titleArtist {
+  padding: 30px;
+}
+
+#playPauseVotes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.pItem {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#votes {
+  font-size: 30px;
+  justify-content: center;
+  padding: 10px;
+  color: white;
+}
+
+#twoBtns {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+#closeBtn {
+  margin-bottom: 0;
 }
 
 #Lyrics {
@@ -39,7 +153,8 @@ body {
 }
 
 button {
-  background-color: #fff !important;
+  /* background-color: #fff !important; */
+  margin-left: 20px;
 }
 
 @import url("https://fonts.googleapis.com/css?family=Sacramento&display=swap");
@@ -65,13 +180,14 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: repeating-linear-gradient(
+  background-image: linear-gradient(to bottom right,rgb(21, 71, 117), rgb(13, 6, 73));
+  /* background-image: repeating-linear-gradient(
     to bottom,
     transparent 7px,
     rgba(255, 254, 254, 0.8) 9px,
     rgba(255, 255, 255, 0.8) 13px,
     transparent 13px
-  );
+  ); */
 }
 
 @-webkit-keyframes blink {
@@ -115,3 +231,4 @@ body {
     color: #fff6a9;
   }
 }
+
