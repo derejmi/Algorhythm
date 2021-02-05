@@ -46,8 +46,6 @@ class Lyrics extends React.Component {
           if (r.ok) return r.json();
         })
         .then((data) => {
-          console.log(url, "url");
-          console.log(data, "data");
           this.setState({ lyrics: data.lyrics });
           // const lyrics = data["lyrics"];
           // this.setState(lyrics);

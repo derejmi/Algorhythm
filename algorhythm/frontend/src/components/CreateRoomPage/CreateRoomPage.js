@@ -23,7 +23,7 @@ class CreateRoomPage extends Component {
   }
 
   handleCanGuestPauseChange = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     var a = e.target.value;
     console.log(a);
     this.setState({
@@ -32,14 +32,14 @@ class CreateRoomPage extends Component {
   };
 
   handleVotesChange = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     this.setState({
       votes_for_skip: e.target.value,
     });
   };
 
   handleEmail = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     this.setState({
       email: e.target.value,
     });
@@ -91,21 +91,27 @@ class CreateRoomPage extends Component {
 
   renderCreateButton = (e) => {
     return (
-      <div>
+      <div id="create-button">
         <label>
           Email
-          <input type="text" onChange={this.handleEmail} />
+          <input id="email-submit" type="text" onChange={this.handleEmail} />
         </label>
 
-        <input type="submit" value="Create a Room" />
+        <input id="submit-btn" type="submit" value="Create a Room" />
 
-        <button onClick={this.goBack}>Back</button>
+        <button id="back" onClick={this.goBack}>
+          Back
+        </button>
       </div>
     );
   };
 
   renderUpdateButton = (e) => {
-    return <button onClick={this.handleUpdateButtonClick}>Update Room</button>;
+    return (
+      <button id="update-button" onClick={this.handleUpdateButtonClick}>
+        Update Room
+      </button>
+    );
   };
 
   render() {
@@ -121,12 +127,14 @@ class CreateRoomPage extends Component {
           <label id="guest">
             Guest Control of Playback State
             <input
+              id="pause-true"
               type="radio"
               value="true"
               onChange={this.handleCanGuestPauseChange}
             />{" "}
             True
             <input
+              id="pause-false"
               type="radio"
               value="false"
               onChange={this.handleCanGuestPauseChange}
@@ -137,6 +145,7 @@ class CreateRoomPage extends Component {
           <label id="votes">
             Votes Required To Skip Song
             <input
+              id="votes-input"
               type="number"
               min="1"
               max="4"
