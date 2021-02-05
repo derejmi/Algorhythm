@@ -81,13 +81,13 @@ describe("CreateRoomPage", () => {
   test("handleVotesChange", () => {
     let input = component.find("#votes-input");
     input.simulate("change", { target: { value: "2" } });
-    expect(component.state("can_guests_pause")).toBe(true);
+    expect(component.state("votes_for_skip")).toBe("2");
   });
 
   test("handleEmail", () => {
     let input = component.find("#email-submit");
-    input.simulate("change", { target: { value: "2" } });
-    expect(component.state("can_guests_pause")).toBe(true);
+    input.simulate("change", { target: { value: "a@gmail.com" } });
+    expect(component.state("email")).toBe("a@gmail.com");
   });
 
   test("Create Button area exists", () => {
@@ -116,6 +116,14 @@ describe("CreateRoomPage", () => {
     let button = component.find("button");
     expect(button).toExist;
   });
+
+  test("handleSubmit runs", () => {
+    const instance = component.instance();
+    const handleSubmit = sinon.spy(instance, "handleSubmit");
+    const button = component.find("form");
+    button.simulate("submit");
+    expect(handleSubmit.calledOnce).toBe(true);
+  });
 });
 
 describe("CreateRoomPage", () => {
@@ -142,5 +150,16 @@ describe("CreateRoomPage", () => {
   //test for p greeting
   test("It has a update button", () => {
     expect(component.find("#update-button").text()).toContain("Update Room");
+  });
+
+  test("handleUpdateButtonClick runs", () => {
+    const instance = component.instance();
+    const handleUpdateButtonClick = sinon.spy(
+      instance,
+      "handleUpdateButtonClick"
+    );
+    const button = component.find("#update-button");
+    button.simulate("click");
+    expect(handleUpdateButtonClick.calledOnce).toBe(true);
   });
 });

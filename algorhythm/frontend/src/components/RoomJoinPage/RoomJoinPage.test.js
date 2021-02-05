@@ -35,4 +35,12 @@ describe("RoomJoinPage", () => {
     input.simulate("change", { target: { value: "TESTa" } });
     expect(component.state("roomCode")).toBe("TESTa");
   });
+
+  test("roomButtonPressed runs", () => {
+    const instance = component.instance();
+    const roomButtonPressed = sinon.spy(instance, "roomButtonPressed");
+    const button = component.find("#enter-room");
+    button.simulate("click");
+    expect(roomButtonPressed.calledOnce).toBe(true);
+  });
 });
