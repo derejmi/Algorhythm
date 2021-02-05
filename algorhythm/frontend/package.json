@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack --mode development --watch",
     "build": "webpack --mode production",
-    "test": "jest --watch --setupFiles ./src/test/setupTests.js"
+    "test": "jest --watch --setupFiles ./src/test/setupTests.js",
+    "coverage": "jest --setupFiles ./src/test/setupTests.js --coverage --watchAll=false"
   },
   "jest": {
     "moduleNameMapper": {
