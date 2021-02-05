@@ -35,6 +35,7 @@ class MusicPlayer extends Component {
     const songProgress = (this.props.time / this.props.duration) * 100;
     return (
       <>
+      <div id="musicPlayerPage">
       <section id="titleImg">
         <div id="topItem">
         <div id="titleArtist" className="musicItem">
@@ -74,6 +75,7 @@ class MusicPlayer extends Component {
         </div>
 {/*  */}
         <LinearProgress variant="determinate" value={songProgress} />
+        </div>
       </>
     );
   }

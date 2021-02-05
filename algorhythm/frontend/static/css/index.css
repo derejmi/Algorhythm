@@ -77,8 +77,18 @@ input {
 
 #extra {
   border: 2px dotted green;
+  /* position: absolute; */
   display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0;
+  padding: 20px;
 }
+
+/* #closeBtn {
+  margin-bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+} */
 
 #roomCode {
   /* border: 4px solid green; */
@@ -90,6 +100,10 @@ input {
   border: 4px solid purple;
   text-align: center;
 } */
+
+#musicPlayerPage {
+  margin: 20px;
+}
 
 #titleImg {
   /* border: 10px dotted pink; */
@@ -137,9 +151,7 @@ input {
   padding: 20px;
 }
 
-#closeBtn {
-  margin-bottom: 0;
-}
+
 
 #Lyrics {
   background-color: #fff;
