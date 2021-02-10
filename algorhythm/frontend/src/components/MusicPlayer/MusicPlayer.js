@@ -27,36 +27,51 @@ class MusicPlayer extends Component {
     fetch("/spotify/play", requestOptions);
   }
 
-  // getLyrics =() => {
-  //   fetch('https://api.lyrics.ovh/v1/artist/title')
-  // }
-
   render() {
     const songProgress = (this.props.time / this.props.duration) * 100;
     return (
       <>
-        {/* {* <h1>{this.props.title}</h1>
+        <div id="musicPlayerPage">
+      <section id="titleImg">
+        <div id="topItem">
+        <div id="titleArtist" className="musicItem">
+          <h3 className="flashing">{this.props.title}</h3>
 
-     ≈
+          <h4 className="flashing">{this.props.artist}</h4>
+        </div>
+        <div id="albumArt" className="musicItem">
+          <img src={this.props.image_url} height="220px" width="220px" />
+        </div>
+        </div>
+        </section>
 
-        {/* {this.props.is_playing ? PAUSEBUTTON : PLAYBUTTON} */}
-        <h2>{this.props.title}</h2>
-        <h3>{this.props.artist}</h3>
-        <img src={this.props.image_url} height="300px" width="300px" />
-        <img
-          src="https://img.icons8.com/clouds/100/000000/play.png"
+        <div>
+          <section id="playPauseVotes">
+        <div className="pItem">
+        <div
           onClick={() => {
             this.props.is_playing ? this.pauseSong() : this.playSong();
           }}
-        />
-        <img
-          src="https://img.icons8.com/dusk/64/000000/end.png"
-          onClick={() => this.skipSong()}
-        />{" "}
-        <div>
-          {this.props.votes} / {this.props.required_votes}
+        >   
+        {this.props.is_playing ? <img src="https://img.icons8.com/dusk/64/000000/pause.png" /> : <img src="https://img.icons8.com/dusk/64/000000/play.png" /> }     </div>
         </div>
+        
+
+        {/*  */}
+          <div className="pItem">
+            <img
+              src="https://img.icons8.com/dusk/64/000000/end.png"
+              onClick={() => this.skipSong()}
+            />{" "}
+            </div>
+            <div id="votes" className="pItem">
+              {this.props.votes} / {this.props.required_votes}
+          </div>
+          </section>
+        </div>
+{/*  */}
         <LinearProgress variant="determinate" value={songProgress} />
+        </div>
       </>
     );
   }

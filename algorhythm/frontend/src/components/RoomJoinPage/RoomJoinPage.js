@@ -14,28 +14,28 @@ export default class RoomJoinPage extends Component {
 
   render() {
     return (
-      <div>
+      <div className="mainPage white">
         <div>
-          <h1>Join a Room</h1>
+          <h1 >Join a Room</h1>
         </div>
         <div>
           <form>
+            <label>Enter a Room Code
             <input
-              placeholder="enter a room code"
               label="Code"
               value={this.state.roomCode}
               helperText={this.state.error}
               onChange={this.handleTextFieldChange}
               error={this.state.error}
-            />
+            /></label>
           </form>
         </div>
         <div align="center">
-          <button onClick={this.roomButtonPressed}>Enter Room</button>
+          <button className="createSubmit" onClick={this.roomButtonPressed}>Join Room</button>
         </div>
         <div align="center">
           <Link to="/">
-            <button>Back</button>
+            <button className="joinSubmit">Back</button>
           </Link>
         </div>
       </div>

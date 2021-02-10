@@ -11,7 +11,6 @@ class App extends Component {
     return (
       <div className="center">
         <HomePage />
-        {/* <h1>Hi</h1> */}
       </div>
     );
   }
