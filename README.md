@@ -1,5 +1,7 @@
 # Algorhythm
 
+[![License: MIT](https://img.shields.io/badge/Licence-MIT-green.svg)](https://opensource.org/licenses/MIT)
+
 A music app that brings family and friends together through a shared love of music. 
 
 The idea is that the host sets up a room and controls the music. The host can then invite others to join their music room by sending them a code. Once listeners join, the host may give them the rights to vote if they want to pause or skip the currently playing song.
@@ -46,3 +48,7 @@ Python | Django | JavaScript | React | Webpack | Babel | SQLite3
 [derejmi](https://github.com/derejmi) | 
 [Tempestx4](https://github.com/Tempestx4) |
 [stephanie-ai](https://github.com/stephanie-ai)
+
+## License
+
+- [MIT Licence](https://opensource.org/licenses/mit-license.php)
