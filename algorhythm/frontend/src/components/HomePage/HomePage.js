@@ -32,14 +32,16 @@ export default class HomePage extends Component {
   showHomeContent = () => {
     return (
       <>
-        <h1>Algorhythm</h1>
+        <div className="mainPage">
+        <h1 id="algoTitle">Algorhythm</h1>
         <div>
           <Link to="/join">
-            <button>Join a Room</button>
+            <button className="joinSubmit">Join a Room</button>
           </Link>
           <Link to="/create">
-            <button>Create a Room</button>
+            <button className="createSubmit">Create a Room</button>
           </Link>
+        </div>
         </div>
       </>
     );

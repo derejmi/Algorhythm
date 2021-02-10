@@ -96,29 +96,30 @@ class CreateRoomPage extends Component {
           Email
           <input type="text" onChange={this.handleEmail} />
         </label>
+        <br></br>
 
-        <input type="submit" value="Create a Room" />
+        <input type="submit" className="createSubmit" value="Create a Room" />
 
-        <button onClick={this.goBack}>Back</button>
+        <button className="joinSubmit" onClick={this.goBack}>Back</button>
       </div>
     );
   };
 
   renderUpdateButton = (e) => {
-    return <button onClick={this.handleUpdateButtonClick}>Update Room</button>;
+    return <button className="createSubmit" onClick={this.handleUpdateButtonClick}>Update Room</button>;
   };
 
   render() {
     const title = this.props.update ? "Update Room" : "Create a Room";
     return (
-      <div>
+      <div className="mainPage create">
         {/* <Collaspe in={this.state.errorMsg != "" || this.state.successMsg != ""}>
           {this.state.successMsg}
         </Collaspe> */}
         {this.state.responseMsg ? alert(this.state.responseMsg) : null}
-        <p>This is the {title} Page</p>
-        <form onSubmit={this.handleSubmit}>
-          <label id="guest">
+        <h1>{title}</h1>
+        <form className="guest" onSubmit={this.handleSubmit}>
+          <label className="guest">
             Guest Control of Playback State
             <input
               type="radio"
@@ -134,7 +135,7 @@ class CreateRoomPage extends Component {
             False
           </label>
           <br></br>
-          <label id="votes">
+          <label className="guest">
             Votes Required To Skip Song
             <input
               type="number"
@@ -145,6 +146,7 @@ class CreateRoomPage extends Component {
             />
           </label>
           <br></br>
+
           {this.props.update ? null : this.renderCreateButton()}
         </form>
         {this.props.update ? this.renderUpdateButton() : null}
