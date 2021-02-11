@@ -70,14 +70,6 @@ class Room extends React.Component {
       });
   };
 
-  // getLyrics = () => {
-  //   fetch('https://api.lyrics.ovh/v1/artist/title')
-  //     .then((response) => response.json())
-  //     .then(data => {
-  //       // show lyrics
-  //     })
-  // }
-
   authenticateSpotify = () => {
     fetch("/spotify/is-authenticated")
       .then((response) => response.json())
@@ -124,7 +116,7 @@ class Room extends React.Component {
           />
         </div>
         <div>
-          <button onClick={() => this.updateShowSettings(false)}>Close</button>
+          <button className="joinSubmit" onClick={() => this.updateShowSettings(false)}>Close</button>
         </div>
       </div>
     );
@@ -132,7 +124,7 @@ class Room extends React.Component {
 
   renderSettingsButton = () => {
     return (
-      <button onClick={() => this.updateShowSettings(true)}>Settings</button>
+      <button className="joinSubmit" onClick={() => this.updateShowSettings(true)}>Settings</button>
     );
   };
 
@@ -143,15 +135,19 @@ class Room extends React.Component {
     // let code = this.props.match.params.code;
     return (
       <div>
-        <h1>Room: {this.code}</h1>
+        <div id="roomCode">
+          <h3>Room: {this.code}</h3>
+        </div>
+        
+      <div id="musicDiv">
+         <MusicPlayer {...this.state.song} />
+      </div>
 
-        <MusicPlayer {...this.state.song} />
-
-        {/* getLyrics() */}
-
-        {/* {this.state.song} */}
-        {this.state.is_host ? this.renderSettingsButton() : null}
-        <button onClick={this.handleLeaveRoom}>Leave Room</button>
+        <div id="twoBtns">
+          {this.state.is_host ? this.renderSettingsButton() : null}
+        <button className="createSubmit" onClick={this.handleLeaveRoom}>Leave Room</button>
+        </div>
+        
         <Lyrics {...this.state.song} />
       </div>
     );
@@ -159,8 +155,3 @@ class Room extends React.Component {
 }
 
 export default Room;
-
-//  <h2>Votes to skip songs: {this.state.votes_for_skip}</h2>
-//         <h2>Can Guests Pause: {String(this.state.can_guests_pause)}</h2>
-//         <h2>Host: {String(this.state.is_host)}</h2>
-//         <h2>Host Email:{String(this.state.host_email)} </h2>

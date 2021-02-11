@@ -96,35 +96,35 @@ class CreateRoomPage extends Component {
           Email
           <input id="email-submit" type="text" onChange={this.handleEmail} />
         </label>
+        <br></br>
 
-        <input id="submit-btn" type="submit" value="Create a Room" />
+        <input id="submit-btn" type="submit" className="createSubmit" value="Create a Room" />
 
-        <button id="back" onClick={this.goBack}>
-          Back
-        </button>
+        <button id="back" className="joinSubmit" onClick={this.goBack}>Back</button>
+
       </div>
     );
   };
 
   renderUpdateButton = (e) => {
     return (
-      <button id="update-button" onClick={this.handleUpdateButtonClick}>
-        Update Room
-      </button>
+      <button id="update-button" className="createSubmit" onClick={this.handleUpdateButtonClick}>
+            Update Room
+      </button>;
     );
   };
 
   render() {
     const title = this.props.update ? "Update Room" : "Create a Room";
     return (
-      <div>
+      <div className="mainPage create">
         {/* <Collaspe in={this.state.errorMsg != "" || this.state.successMsg != ""}>
           {this.state.successMsg}
         </Collaspe> */}
         {this.state.responseMsg ? alert(this.state.responseMsg) : null}
-        <p>This is the {title} Page</p>
-        <form onSubmit={this.handleSubmit}>
-          <label id="guest">
+        <h1>{title}</h1>
+        <form className="guest" onSubmit={this.handleSubmit}>
+          <label className="guest">
             Guest Control of Playback State
             <input
               id="pause-true"
@@ -142,7 +142,7 @@ class CreateRoomPage extends Component {
             False
           </label>
           <br></br>
-          <label id="votes">
+          <label className="guest">
             Votes Required To Skip Song
             <input
               id="votes-input"
@@ -154,6 +154,7 @@ class CreateRoomPage extends Component {
             />
           </label>
           <br></br>
+
           {this.props.update ? null : this.renderCreateButton()}
         </form>
         {this.props.update ? this.renderUpdateButton() : null}
