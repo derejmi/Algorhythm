@@ -43,13 +43,13 @@ class MusicPlayer extends Component {
         <h2>{this.props.title}</h2>
         <h3>{this.props.artist}</h3>
         <img src={this.props.image_url} height="300px" width="300px" />
-        <img
+        <img id="pause"
           src="https://img.icons8.com/clouds/100/000000/play.png"
           onClick={() => {
             this.props.is_playing ? this.pauseSong() : this.playSong();
           }}
         />
-        <img
+        <img id="skip_button"
           src="https://img.icons8.com/dusk/64/000000/end.png"
           onClick={() => this.skipSong()}
         />{" "}
