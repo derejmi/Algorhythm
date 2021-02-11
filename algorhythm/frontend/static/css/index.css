@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Mega&family=Nunito+Sans&display=swap');
+
+html,
+body {
+  height: 100vh;
+  margin: 0;
+  text-align: center;
+  vertical-align: middle;
+} 
+
+* {
+  box-sizing: border-box;
+  margin: 0; 
+  padding: 0;
+}
+
+#algoTitle {
+  color: white;
+  font-family: 'Lexend Mega', sans-serif;
+}
+
+.guest {
+  padding: 10px;
+}
+
+.createSubmit {
+  background-color: rgb(206, 84, 155);
+  border-radius: 4px;
+  border-style: none;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.joinSubmit {
+  background-color: rgb(33, 180, 199);
+  border-radius: 4px;
+  border-style: none;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+}
+
+.mainPage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.white {
+  color: white;
+}
+
+input {
+  margin-left: 20px;
+  padding: 8px;
+}
+
+.create {
+  color: white;
+}
+
+#extra {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0;
+  padding: 20px;
+}
+
+#roomCode {
+  text-align: center;
+  color: white;
+}
+
+#musicPlayerPage {
+  margin: 20px;
+}
+
+#titleImg {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+#topItem {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.musicItem {
+  align-content: center;
+}
+
+#titleArtist {
+  padding: 30px;
+}
+
+#playPauseVotes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.pItem {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#votes {
+  font-size: 30px;
+  justify-content: center;
+  padding: 10px;
+  color: white;
+}
+
+#twoBtns {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+#Lyrics {
+  background-color: #fff;
+  border-style: dashed;
+  text-align: center;
+}
+
+#Lyrics h1 {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+button {
+  margin-left: 20px;
+}
+
+.flashing {
+  font-size: calc(5px + 5vh);
+  line-height: calc(5px + 10vh);
+  text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+    color: #fff6a9;
+  font-family: Raleway,HelveticaNeue,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  text-align: center;
+  animation: blink 12s infinite;
+  -webkit-animation: blink 12s infinite;
+}
+
+body {
+  padding: 2vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: linear-gradient(to bottom right,rgb(21, 71, 117), rgb(13, 6, 73));
+}
+
+@-webkit-keyframes blink {
+  20%,
+  24%,
+  55% {
+    color: #111;
+    text-shadow: none;
+  }
+
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+  text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+    color: #fff6a9;
+  }
+}
+
+@keyframes blink {
+  20%,
+  24%,
+  55% {
+    color: #111;
+    text-shadow: none;
+  }
+
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+  text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+    color: #fff6a9;
+  }
+}
