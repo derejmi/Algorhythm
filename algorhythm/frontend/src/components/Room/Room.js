@@ -2,6 +2,7 @@ import React from "react";
 import CreateRoomPage from "../CreateRoomPage/CreateRoomPage";
 import MusicPlayer from "../MusicPlayer/MusicPlayer";
 import Lyrics from "../Lyrics/Lyrics.js";
+import "./Room.css";
 
 class Room extends React.Component {
   constructor(props) {

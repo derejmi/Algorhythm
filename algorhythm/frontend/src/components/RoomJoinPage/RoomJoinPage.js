@@ -31,7 +31,7 @@ export default class RoomJoinPage extends Component {
           </form>
         </div>
         <div align="center">
-          <button className="createSubmit" onClick={this.roomButtonPressed}>Join Room</button>
+          <button id="enter-room" className="createSubmit" onClick={this.roomButtonPressed}>Join Room</button>
         </div>
         <div align="center">
           <Link to="/">
@@ -47,7 +47,6 @@ export default class RoomJoinPage extends Component {
     });
   }
   roomButtonPressed() {
-    console.log(this.state.roomCode);
     const requestOptions = {
       method: "POST",
       headers: { "content-type": "application/JSON" },

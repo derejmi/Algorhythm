@@ -45,6 +45,20 @@ class MusicPlayer extends Component {
         </div>
         </section>
 
+//  from testing
+//         <img id="pause"
+//           src="https://img.icons8.com/clouds/100/000000/play.png"
+//           onClick={() => {
+//             this.props.is_playing ? this.pauseSong() : this.playSong();
+//           }}
+//         />
+//         <img id="skip_button"
+//           src="https://img.icons8.com/dusk/64/000000/end.png"
+//           onClick={() => this.skipSong()}
+//         />{" "}
+//         <div>
+//           {this.props.votes} / {this.props.required_votes}
+
         <div>
           <section id="playPauseVotes">
         <div className="pItem">
@@ -53,13 +67,14 @@ class MusicPlayer extends Component {
             this.props.is_playing ? this.pauseSong() : this.playSong();
           }}
         >   
-        {this.props.is_playing ? <img src="https://img.icons8.com/dusk/64/000000/pause.png" /> : <img src="https://img.icons8.com/dusk/64/000000/play.png" /> }     </div>
+        {this.props.is_playing ? <img src="https://img.icons8.com/dusk/64/000000/pause.png" /> 
+         : <img src="https://img.icons8.com/dusk/64/000000/play.png" /> }     </div>
         </div>
         
 
         {/*  */}
           <div className="pItem">
-            <img
+            <img id="skip_button"
               src="https://img.icons8.com/dusk/64/000000/end.png"
               onClick={() => this.skipSong()}
             />{" "}
@@ -68,6 +83,7 @@ class MusicPlayer extends Component {
               {this.props.votes} / {this.props.required_votes}
           </div>
           </section>
+
         </div>
 {/*  */}
         <LinearProgress variant="determinate" value={songProgress} />
