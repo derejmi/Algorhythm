@@ -6,8 +6,7 @@ A music app that brings family and friends together through a shared love of mus
 
 The idea is that the host sets up a room and controls the music. The host can then invite others to join their music room by sending them a code. Once listeners join, the host may give them the rights to vote if they want to pause or skip the currently playing song.
 
-<!-- ![](algo.gif) -->
-![algorhythm demo](demo.png)
+![](algovideo.gif)
 
 ## Installation & Usage
 
@@ -21,7 +20,7 @@ The idea is that the host sets up a room and controls the music. The host can th
 
 To start the React app
 - `cd` into algorhythm/frontend
-- run `npm start`
+- Run `npm start`
 
 ## Algorhythm System
 
@@ -35,6 +34,7 @@ Python | Django | JavaScript | React | Webpack | Babel | SQLite3
 
 - Enabled third party authentication through the Spotify API
 - Implemented email functionality so hosts receive an email
+- Setup tokens that expire after 1 hour and creates refresh tokens
 - Successfully connected to Lyrics API
 - Achieved up to 40% testing coverage
 
