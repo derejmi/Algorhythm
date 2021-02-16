@@ -2,7 +2,6 @@ import React from "react";
 import CreateRoomPage from "../CreateRoomPage/CreateRoomPage";
 import MusicPlayer from "../MusicPlayer/MusicPlayer";
 import Lyrics from "../Lyrics/Lyrics.js";
-import "./Room.css";
 
 class Room extends React.Component {
   constructor(props) {
@@ -116,7 +115,12 @@ class Room extends React.Component {
           />
         </div>
         <div>
-          <button className="joinSubmit" onClick={() => this.updateShowSettings(false)}>Close</button>
+          <button
+            className="joinSubmit"
+            onClick={() => this.updateShowSettings(false)}
+          >
+            Close
+          </button>
         </div>
       </div>
     );
@@ -124,7 +128,12 @@ class Room extends React.Component {
 
   renderSettingsButton = () => {
     return (
-      <button className="joinSubmit" onClick={() => this.updateShowSettings(true)}>Settings</button>
+      <button
+        className="joinSubmit"
+        onClick={() => this.updateShowSettings(true)}
+      >
+        Settings
+      </button>
     );
   };
 
@@ -138,16 +147,18 @@ class Room extends React.Component {
         <div id="roomCode">
           <h3>Room: {this.code}</h3>
         </div>
-        
-      <div id="musicDiv">
-         <MusicPlayer {...this.state.song} />
-      </div>
+
+        <div id="musicDiv">
+          <MusicPlayer {...this.state.song} />
+        </div>
 
         <div id="twoBtns">
           {this.state.is_host ? this.renderSettingsButton() : null}
-        <button className="createSubmit" onClick={this.handleLeaveRoom}>Leave Room</button>
+          <button className="createSubmit" onClick={this.handleLeaveRoom}>
+            Leave Room
+          </button>
         </div>
-        
+
         <Lyrics {...this.state.song} />
       </div>
     );

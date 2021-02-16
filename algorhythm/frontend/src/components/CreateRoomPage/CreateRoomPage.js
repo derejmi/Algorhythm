@@ -98,19 +98,29 @@ class CreateRoomPage extends Component {
         </label>
         <br></br>
 
-        <input id="submit-btn" type="submit" className="createSubmit" value="Create a Room" />
+        <input
+          id="submit-btn"
+          type="submit"
+          className="createSubmit"
+          value="Create a Room"
+        />
 
-        <button id="back" className="joinSubmit" onClick={this.goBack}>Back</button>
-
+        <button id="back" className="joinSubmit" onClick={this.goBack}>
+          Back
+        </button>
       </div>
     );
   };
 
   renderUpdateButton = (e) => {
     return (
-      <button id="update-button" className="createSubmit" onClick={this.handleUpdateButtonClick}>
-            Update Room
-      </button>;
+      <button
+        id="update-button"
+        className="createSubmit"
+        onClick={this.handleUpdateButtonClick}
+      >
+        Update Room
+      </button>
     );
   };
 
